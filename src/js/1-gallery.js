@@ -83,8 +83,9 @@ const createGalleryMarkup = images
   .join('');
 
 galleryEl.innerHTML = createGalleryMarkup;
+
 let currentInstance = null;
-// делегування події кліку на галерею
+делегування події кліку на галерею
 galleryEl.addEventListener('click', event => {
   event.preventDefault();
 
@@ -108,3 +109,7 @@ document.addEventListener('keydown', event => {
 });
 
 // Закриваємо модальне вікно при натисканні клавіші Escape
+
+new SimpleLightbox('.some-element a', {
+  /* options */
+});
