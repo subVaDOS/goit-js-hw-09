@@ -35,7 +35,6 @@ function onFormSubmit(event) {
 
   console.log('Form submitted with data:', formData);
 
-  // Очищення
   form.reset();
   localStorage.removeItem(STORAGE_KEY);
   formData = { email: '', message: '' };
