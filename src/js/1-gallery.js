@@ -1,3 +1,6 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const images = [
   {
     preview:
@@ -64,52 +67,31 @@ const images = [
   },
 ];
 // масив і створення галереї
-const galleryEl = document.querySelector('.gallery');
+const galleryItems = images.map(image => {
+  return {
+    preview: image.preview,
+    original: image.original,
+    description: image.description,
+  };
+});
 
-const createGalleryMarkup = images
+const galleryContainer = document.querySelector('.gallery');
+
+const galleryMarkup = galleryItems
   .map(
     ({ preview, original, description }) => `
-  <li class="gallery-item">
-    <a class="gallery-link" href="${original}">
-      <img
-        class="gallery-image"
-        src="${preview}"
-        data-source="${original}"
-        alt="${description}"
-      />
-    </a>
-  </li>`
+    <li class="gallery-item">
+      <a class="gallery-link" href="${original}">
+        <img class="gallery-image" src="${preview}" alt="${description}" />
+      </a>
+    </li>`
   )
   .join('');
 
-galleryEl.innerHTML = createGalleryMarkup;
+galleryContainer.innerHTML = galleryMarkup;
 
-let currentInstance = null;
-делегування події кліку на галерею
-galleryEl.addEventListener('click', event => {
-  event.preventDefault();
-
-  const isImageEl = event.target.nodeName === 'IMG';
-  if (!isImageEl) return;
-
-  const largeImageURL = event.target.dataset.source;
-
-  currentInstance = basicLightbox.create(`
-    <img src="${largeImageURL}" alt="${event.target.alt}" />
-  `);
-
-  currentInstance.show();
-});
-
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && currentInstance) {
-    currentInstance.close();
-    currentInstance = null; // Очищаємо змінну після закриття
-  }
-});
-
-// Закриваємо модальне вікно при натисканні клавіші Escape
-
-new SimpleLightbox('.some-element a', {
-  /* options */
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
 });
