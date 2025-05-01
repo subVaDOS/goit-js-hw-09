@@ -39,31 +39,3 @@ function onFormSubmit(event) {
   localStorage.removeItem(STORAGE_KEY);
   formData = { email: '', message: '' };
 }
-
-// function loadFormData() {
-//   const savedData = localStorage.getItem(STORAGE_KEY);
-//   if (!savedData) return;
-
-//   try {
-//     formData = JSON.parse(savedData);
-
-//     // Заповнюємо форму, якщо є збережені значення
-//     form.elements.email.value = formData.email || '';
-//     form.elements.message.value = formData.message || '';
-//   } catch (error) {
-//     console.error('Error parsing saved form data:', error);
-//   }
-// }
-// 5. Заповнення полів форми з локального сховища
-// function loadFormData() {
-
-// const savedData = localStorage.getItem(STORAGE_KEY);
-// if (!savedData) return;
-
-// try {
-//   formData = JSON.parse(savedData);
-//   form.elements.email.value = formData.email || '';
-//   form.elements.message.value = formData.message || '';
-// } catch (error) {
-//   console.error('Error parsing saved form data:', error);
-// }
