@@ -55,15 +55,15 @@ function loadFormData() {
   }
 }
 // 5. Заповнення полів форми з локального сховища
-// function loadFormData() {
+function loadFormData() {
 
-const savedData = localStorage.getItem(STORAGE_KEY);
-if (!savedData) return;
+// const savedData = localStorage.getItem(STORAGE_KEY);
+// if (!savedData) return;
 
-try {
-  formData = JSON.parse(savedData);
-  form.elements.email.value = formData.email || '';
-  form.elements.message.value = formData.message || '';
-} catch (error) {
-  console.error('Error parsing saved form data:', error);
-}
+// try {
+//   formData = JSON.parse(savedData);
+//   form.elements.email.value = formData.email || '';
+//   form.elements.message.value = formData.message || '';
+// } catch (error) {
+//   console.error('Error parsing saved form data:', error);
+// }
