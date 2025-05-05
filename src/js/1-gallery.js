@@ -1,6 +1,5 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-
 const images = [
   {
     preview:
@@ -66,36 +65,28 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
-// масив і створення галереї
-const galleryItems = images.map(image => {
-  return {
-    preview: image.preview,
-    original: image.original,
-    description: image.description,
-  };
-});
-
-const galleryContainer = document.querySelector('.gallery');
-
-const galleryMarkup = galleryItems
-  .map(
-    ({ preview, original, description }) => `<li class="gallery-item">
-	<a class="gallery-link" href="${original}">
-		<img 
-		  class="gallery-image" 
-		  src="${preview}" 
-		  alt="${description}" 
-		/>
-	</a>
-</li>
-    `
-  )
-  .join('');
-
-galleryContainer.innerHTML = galleryMarkup;
-
+const container = document.querySelector('.gallery');
+function imageTemplate({ preview, original, description }) {
+  return `<li class="gallery-item">
+  <a class="gallery-link" href="${original}">
+    <img
+      class="gallery-image"
+      src="${preview}"
+      alt="${description}"
+    />
+  </a>
+</li>`;
+}
+function galleryTemplete(array) {
+  return array.map(imageTemplate).join('');
+}
+function renderGallery(arr) {
+  const markup = galleryTemplete(arr);
+  container.innerHTML = markup;
+}
+renderGallery(images);
 const lightbox = new SimpleLightbox('.gallery a', {
+  captions: true,
   captionsData: 'alt',
-  captionPosition: 'bottom',
   captionDelay: 250,
 });
