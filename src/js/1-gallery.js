@@ -79,12 +79,16 @@ const galleryContainer = document.querySelector('.gallery');
 
 const galleryMarkup = galleryItems
   .map(
-    ({ preview, original, description }) => `
-    <li class="gallery-item">
-      <a class="gallery-link" href="${original}">
-        <img class="gallery-image" src="${preview}" alt="${description}" />
-      </a>
-    </li>`
+    ({ preview, original, description }) => `<li class="gallery-item">
+	<a class="gallery-link" href="${original}">
+		<img 
+		  class="gallery-image" 
+		  src="${preview}" 
+		  alt="${description}" 
+		/>
+	</a>
+</li>
+    `
   )
   .join('');
 
